@@ -23,6 +23,17 @@ class CustomEnchantsCommand extends BaseCommand
     /** @var PiggyCustomEnchants */
     protected $plugin;
 
+    /**
+     * @param PiggyCustomEnchants $plugin
+     * @param string $name
+     * @param string $desctiption
+     * @param string[] $aliases
+     */
+    public function __construct(PiggyCustomEnchants $plugin, string $name, string $desctiption, array $aliases) {
+        $this->plugin = $plugin;
+        parent::__construct($plugin, $name, $desctiption, $aliases);
+    }
+
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
         $subcommands = array_values(array_map(function (BaseSubCommand $subCommand): string {
