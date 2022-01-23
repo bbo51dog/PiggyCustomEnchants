@@ -13,7 +13,6 @@ use DaPigGuy\PiggyCustomEnchants\PiggyCustomEnchants;
 use DaPigGuy\PiggyCustomEnchants\utils\Utils;
 use jojoe77777\FormAPI\CustomForm;
 use pocketmine\command\CommandSender;
-use pocketmine\item\enchantment\Enchantment;
 use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
@@ -21,7 +20,7 @@ use pocketmine\utils\TextFormat;
 class EnchantSubCommand extends BaseSubCommand
 {
     /** @var PiggyCustomEnchants */
-    protected $plugin;
+    protected PiggyCustomEnchants $plugin;
 
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {

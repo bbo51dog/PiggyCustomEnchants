@@ -18,7 +18,7 @@ use pocketmine\utils\TextFormat;
 class RemoveSubCommand extends BaseSubCommand
 {
     /** @var PiggyCustomEnchants */
-    protected $plugin;
+    protected PiggyCustomEnchants $plugin;
 
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {

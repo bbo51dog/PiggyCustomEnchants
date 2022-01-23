@@ -32,11 +32,11 @@ class ShrinkEnchant extends ToggleableEnchantment
     public int $itemType = CustomEnchant::ITEM_TYPE_ARMOR;
 
     /** @var array */
-    public $shrunk;
+    public array $shrunk;
     /** @var array */
-    public $shrinkPower;
+    public array $shrinkPower;
     /** @var array */
-    public $shiftCache;
+    public array $shiftCache;
 
     public function getReagent(): array
     {

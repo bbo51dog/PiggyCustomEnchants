@@ -19,15 +19,15 @@ use pocketmine\player\Player;
 class LacedWeaponEnchant extends ReactiveEnchantment
 {
     /** @var array */
-    private $effects;
+    private array $effects;
     /** @var array */
-    private $baseDuration;
+    private array $baseDuration;
     /** @var array */
-    private $baseAmplifier;
+    private array $baseAmplifier;
     /** @var int[] */
-    private $durationMultiplier;
+    private array $durationMultiplier;
     /** @var int[] */
-    private $amplifierMultiplier;
+    private array $amplifierMultiplier;
 
     public function __construct(PiggyCustomEnchants $plugin, int $id, string $name, int $rarity = Rarity::RARE, ?array $effects = null, array $durationMultiplier = [60], array $amplifierMultiplier = [1], array $baseDuration = [0], array $baseAmplifier = [0])
     {

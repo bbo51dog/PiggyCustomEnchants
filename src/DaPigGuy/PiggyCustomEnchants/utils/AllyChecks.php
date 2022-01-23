@@ -12,7 +12,7 @@ use pocketmine\utils\Utils as PMMPUtils;
 class AllyChecks
 {
     /** @var array */
-    private static $checks = [];
+    private static array $checks = [];
 
     /**
      * @param Plugin $plugin

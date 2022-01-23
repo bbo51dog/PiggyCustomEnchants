@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "125734cb9a7746425676c218d1021912",
+    "content-hash": "5407171fc23bdcc6ba55fe1ac2405d1b",
     "packages": [
         {
             "name": "adhocore/json-comment",
@@ -120,6 +120,28 @@
                 }
             ],
             "time": "2021-08-15T20:50:18+00:00"
+        },
+        {
+            "name": "cortexpe/commando",
+            "version": "dev-PM4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CortexPE/Commando/",
+                "reference": "89a1bc1f9ffb748004888e38e0479e2ec58a3fc4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CortexPE\\Commando\\": [
+                        "src\\CortexPE\\Commando\\"
+                    ]
+                }
+            },
+            "license": [
+                "LGPL-3.0-only"
+            ],
+            "description": "A Command Framework virion for PocketMine-MP ",
+            "time": "2021-11-21T08:13:35+00:00"
         },
         {
             "name": "fgrosse/phpasn1",
@@ -1481,7 +1503,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "cortexpe/commando": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

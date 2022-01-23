@@ -13,7 +13,7 @@ use pocketmine\player\Player;
 class RecursiveEnchant extends ReactiveEnchantment
 {
     /** @var array */
-    public static $isUsing;
+    public static array $isUsing;
 
     public function react(Player $player, Item $item, Inventory $inventory, int $slot, Event $event, int $level, int $stack): void
     {

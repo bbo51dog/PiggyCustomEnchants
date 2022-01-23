@@ -15,7 +15,6 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\Event;
 use pocketmine\event\player\PlayerToggleSneakEvent;
 use pocketmine\inventory\Inventory;
-use pocketmine\item\enchantment\Enchantment;
 use pocketmine\item\Item;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
@@ -32,12 +31,12 @@ class JetpackEnchant extends ReactiveEnchantment
     public int $itemType = CustomEnchant::ITEM_TYPE_BOOTS;
 
     /** @var Player[] */
-    public $activeJetpacks = [];
+    public array $activeJetpacks = [];
 
     /** @var array */
-    public $powerRemaining;
+    public array $powerRemaining;
     /** @var array */
-    public $lastActivated;
+    public array $lastActivated;
 
     public function getReagent(): array
     {

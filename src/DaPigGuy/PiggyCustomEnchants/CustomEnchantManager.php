@@ -13,7 +13,6 @@ use DaPigGuy\PiggyCustomEnchants\enchants\armor\boots\MagmaWalkerEnchant;
 use DaPigGuy\PiggyCustomEnchants\enchants\armor\boots\StompEnchantment;
 use DaPigGuy\PiggyCustomEnchants\enchants\armor\CactusEnchant;
 use DaPigGuy\PiggyCustomEnchants\enchants\armor\chestplate\ChickenEnchant;
-use DaPigGuy\PiggyCustomEnchants\enchants\armor\chestplate\ParachuteEnchant;
 use DaPigGuy\PiggyCustomEnchants\enchants\armor\chestplate\ProwlEnchant;
 use DaPigGuy\PiggyCustomEnchants\enchants\armor\chestplate\SpiderEnchant;
 use DaPigGuy\PiggyCustomEnchants\enchants\armor\chestplate\VacuumEnchant;
@@ -73,7 +72,6 @@ use DaPigGuy\PiggyCustomEnchants\enchants\weapons\DeepWoundsEnchant;
 use DaPigGuy\PiggyCustomEnchants\enchants\weapons\DisarmingEnchant;
 use DaPigGuy\PiggyCustomEnchants\enchants\weapons\DisarmorEnchant;
 use DaPigGuy\PiggyCustomEnchants\enchants\weapons\GooeyEnchant;
-use DaPigGuy\PiggyCustomEnchants\enchants\weapons\HallucinationEnchant;
 use DaPigGuy\PiggyCustomEnchants\enchants\weapons\LacedWeaponEnchant;
 use DaPigGuy\PiggyCustomEnchants\enchants\weapons\LifestealEnchant;
 use DaPigGuy\PiggyCustomEnchants\enchants\weapons\LightningEnchant;
@@ -95,7 +93,7 @@ class CustomEnchantManager
     private static PiggyCustomEnchants $plugin;
 
     /** @var CustomEnchant[] */
-    public static $enchants = [];
+    public static array $enchants = [];
 
     public static function init(PiggyCustomEnchants $plugin): void
     {
@@ -166,7 +164,7 @@ class CustomEnchantManager
         self::registerEnchantment(new GooeyEnchant($plugin, CustomEnchantIds::GOOEY));
         self::registerEnchantment(new GrapplingEnchant($plugin, CustomEnchantIds::GRAPPLING));
         self::registerEnchantment(new GrowEnchant($plugin, CustomEnchantIds::GROW));
-        self::registerEnchantment(new HallucinationEnchant($plugin, CustomEnchantIds::HALLUCINATION));
+        //self::registerEnchantment(new HallucinationEnchant($plugin, CustomEnchantIds::HALLUCINATION));
         self::registerEnchantment(new HarvestEnchant($plugin, CustomEnchantIds::HARVEST));
         self::registerEnchantment(new HeadhunterEnchant($plugin, CustomEnchantIds::HEADHUNTER));
         self::registerEnchantment(new HealingEnchant($plugin, CustomEnchantIds::HEALING));
@@ -184,7 +182,7 @@ class CustomEnchantManager
         self::registerEnchantment(new MolotovEnchant($plugin, CustomEnchantIds::MOLOTOV));
         self::registerEnchantment(new MoltenEnchant($plugin, CustomEnchantIds::MOLTEN));
         self::registerEnchantment(new OverloadEnchant($plugin, CustomEnchantIds::OVERLOAD));
-        self::registerEnchantment(new ParachuteEnchant($plugin, CustomEnchantIds::PARACHUTE));
+        //self::registerEnchantment(new ParachuteEnchant($plugin, CustomEnchantIds::PARACHUTE));
         self::registerEnchantment(new ParalyzeEnchant($plugin, CustomEnchantIds::PARALYZE));
         self::registerEnchantment(new PiercingEnchant($plugin, CustomEnchantIds::PIERCING));
         self::registerEnchantment(new PoisonousCloudEnchant($plugin, CustomEnchantIds::POISONOUSCLOUD));
@@ -223,9 +221,9 @@ class CustomEnchantManager
     /**
      * @param int|Enchantment $id
      */
-    public static function unregisterEnchantment($id): void
+    public static function unregisterEnchantment(Enchantment|int $id): void
     {
-        $id = $id instanceof Enchantment ? $id->getId() : $id;
+        $id = ($id instanceof Enchantment) ? EnchantmentIdMap::getInstance()->toId($id) : $id;
         self::$enchants[$id]->unregister();
         self::$plugin->getLogger()->debug("Custom Enchantment '" . self::$enchants[$id]->getName() . "' unregistered with id " . self::$enchants[$id]->getId());
         unset(self::$enchants[$id]);

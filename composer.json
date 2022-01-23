@@ -4,7 +4,8 @@
     "minimum-stability": "stable",
     "license": "proprietary",
     "require": {
-        "pocketmine/pocketmine-mp": "4.*"
+        "pocketmine/pocketmine-mp": "4.*",
+        "cortexpe/commando": "dev-PM4"
     },
     "repositories": [
         {

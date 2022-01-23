@@ -23,11 +23,11 @@ class AttackerDeterrentEnchant extends ReactiveEnchantment
     public int $itemType = CustomEnchant::ITEM_TYPE_ARMOR;
 
     /** @var Effect[] */
-    private $effects;
+    private array $effects;
     /** @var array */
-    private $durationMultiplier;
+    private array $durationMultiplier;
     /** @var array */
-    private $amplifierMultiplier;
+    private array $amplifierMultiplier;
 
     public function __construct(PiggyCustomEnchants $plugin, int $id, string $name, array $effects, array $durationMultiplier, array $amplifierMultiplier, int $rarity = Rarity::RARE)
     {

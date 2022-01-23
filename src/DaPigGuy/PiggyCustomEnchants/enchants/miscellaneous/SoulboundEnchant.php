@@ -11,7 +11,6 @@ use DaPigGuy\PiggyCustomEnchants\enchants\ReactiveEnchantment;
 use pocketmine\event\Event;
 use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\inventory\Inventory;
-use pocketmine\item\enchantment\Enchantment;
 use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\item\enchantment\Rarity;
 use pocketmine\item\Item;

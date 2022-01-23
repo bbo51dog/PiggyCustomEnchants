@@ -9,7 +9,6 @@ use DaPigGuy\PiggyCustomEnchants\enchants\ReactiveEnchantment;
 use DaPigGuy\PiggyCustomEnchants\PiggyCustomEnchants;
 use DaPigGuy\PiggyCustomEnchants\utils\ProjectileTracker;
 use DaPigGuy\PiggyCustomEnchants\utils\Utils;
-use pocketmine\entity\Entity;
 use pocketmine\entity\projectile\Projectile;
 use pocketmine\event\entity\EntityShootBowEvent;
 use pocketmine\event\Event;
@@ -24,7 +23,7 @@ class ProjectileChangingEnchant extends ReactiveEnchantment
      * @var string
      * @phpstan-var class-string<Entity>
      */
-    private $projectileType;
+    private string $projectileType;
 
     public int $itemType = CustomEnchant::ITEM_TYPE_BOW;
 

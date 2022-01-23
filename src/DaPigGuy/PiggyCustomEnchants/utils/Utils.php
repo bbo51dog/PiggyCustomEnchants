@@ -75,7 +75,7 @@ class Utils
     ];
 
     /** @var array */
-    public static $shouldTakeFallDamage;
+    public static array $shouldTakeFallDamage;
 
     public static function getRomanNumeral(int $integer): string
     {

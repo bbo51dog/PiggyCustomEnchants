@@ -16,8 +16,10 @@ use pocketmine\inventory\Inventory;
 use pocketmine\item\enchantment\Rarity;
 use pocketmine\item\Item;
 use pocketmine\nbt\tag\CompoundTag;
+use pocketmine\network\mcpe\convert\RuntimeBlockMapping;
 use pocketmine\network\mcpe\protocol\BlockActorDataPacket;
 use pocketmine\network\mcpe\protocol\serializer\NetworkNbtSerializer;
+use pocketmine\network\mcpe\protocol\types\BlockPosition;
 use pocketmine\network\mcpe\protocol\types\CacheableNbt;
 use pocketmine\network\mcpe\protocol\UpdateBlockPacket;
 use pocketmine\player\Player;
@@ -30,11 +32,11 @@ class HallucinationEnchant extends ReactiveEnchantment
     public string $name = "Hallucination";
     public int $rarity = Rarity::MYTHIC;
 
-    /** @var NetworkNbtSerializer */
-    public $nbtWriter = null;
+    /** @var NetworkNbtSerializer|null */
+    public ?NetworkNbtSerializer $nbtWriter = null;
 
     /** @var array */
-    public static $hallucinating;
+    public static array $hallucinating;
 
     public function react(Player $player, Item $item, Inventory $inventory, int $slot, Event $event, int $level, int $stack): void
     {
@@ -54,7 +56,7 @@ class HallucinationEnchant extends ReactiveEnchantment
                                 if ($position->equals($originalPosition->add(0, 1, 0))) {
                                     $block = BlockFactory::getInstance()->get(BlockLegacyIds::WALL_SIGN, 2);
                                     if ($this->nbtWriter === null) $this->nbtWriter = new NetworkNbtSerializer();
-                                    $packets[] = BlockActorDataPacket::create($position->getFloorX(), $position->getFloorY(), $position->getFloorZ(), new CacheableNbt(
+                                    $packets[] = BlockActorDataPacket::create(BlockPosition::fromVector3($position), new CacheableNbt(
                                         CompoundTag::create()->
                                         setString(Tile::TAG_ID, "Sign")->
                                         setInt(Tile::TAG_X, $position->getFloorX())->
@@ -66,7 +68,7 @@ class HallucinationEnchant extends ReactiveEnchantment
                                             ])
                                         )));
                                 }
-                                $packets[] = UpdateBlockPacket::create((int)$position->x, (int)$position->y, (int)$position->z, $block->getRuntimeId());
+                                $packets[] = UpdateBlockPacket::create(BlockPosition::fromVector3($position), RuntimeBlockMapping::getInstance()->toRuntimeId($block->getFullId()), UpdateBlockPacket::FLAG_NETWORK, UpdateBlockPacket::DATA_LAYER_NORMAL);
                             }
                         }
                     }
@@ -77,7 +79,7 @@ class HallucinationEnchant extends ReactiveEnchantment
                     for ($x = -1; $x <= 1; $x++) {
                         for ($y = -1; $y <= 3; $y++) {
                             for ($z = -1; $z <= 1; $z++) {
-                                $originalPosition->getWorld()->sendBlocks([$entity], [$originalPosition->round()->add($x, $y, $z)]);
+                                //$originalPosition->getWorld()->sendBlocks([$entity], [$originalPosition->round()->add($x, $y, $z)]); よくわからん　どうせ使わんだろこれ
                             }
                         }
                     }
