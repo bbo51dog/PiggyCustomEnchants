@@ -5,12 +5,12 @@
     "license": "proprietary",
     "require": {
         "pocketmine/pocketmine-mp": "4.*",
-        "cortexpe/commando": "dev-PM4"
+        "cortexpe/commando": "dev-PM-4.0"
     },
     "repositories": [
         {
             "type": "git",
-            "url": "https://github.com/CortexPE/Commando/"
+            "url": "https://github.com/Paroxity/Commando/"
         }
     ]
 }
